@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-       Yup <!-- head definitions go here -->
-    </head>
-    <body>
-      ts a test  <!-- the content goes here -->
-    </body>
-</html>
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Viewer</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    input { width: 400px; padding: 8px; }
+    button { padding: 8px 12px; }
+    pre {
+      white-space: pre-wrap;
+      background: #f4f4f4;
+      padding: 10px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
 
-<iframe src="https://youtube.com" title="u.gg Stats" sandbox="allow-scripts allow-same-origin allow-forms" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<h2>Website HTML Fetcher</h2>
+
+<input id="url" placeholder="Enter full URL (https://example.com)">
+<button onclick="loadHTML()">Fetch</button>
+
+<pre id="output">HTML will appear here...</pre>
+
+<script>
+async function loadHTML() {
+    const url = document.getElementById("url").value;
+
+    // public CORS proxy (for testing only, not production)
+    const proxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent(url);
+
+    try {
+        const res = await fetch(proxy);
+        const text = await res.text();
+        document.getElementById("output").textContent = text;
+    } catch (err) {
+        document.getElementById("output").textContent = "Error: " + err;
+    }
+}
+</script>
+
+</body>
+</html>
