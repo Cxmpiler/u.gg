@@ -1,41 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>My Cookie-Free Embed</title>
     <style>
-        body, html {
-            margin: 0; padding: 0;
-            height: 100%; width: 100%;
-            overflow: hidden;
-            background: #0b0b0b; /* u.gg dark theme match */
-        }
-
-        .ipad-container {
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        iframe {
-            /* iPad Pro Landscape Logical Width */
-            width: 1366px !important;
-            height: 2500px !important; /* Long enough for builds */
-            border: none;
-
-            /* SCALE CALCULATION: 
-               If your phone is ~390px wide, 390/1366 = 0.28 
-               Adjust this number if the edges are cut off! */
-            transform: scale(0.285);
-            transform-origin: 0 0;
-            
-            display: block;
-        }
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        iframe { width: 100%; height: 100vh; border: none; }
     </style>
 </head>
 <body>
-    <div class="ipad-container">
-        <iframe src="https://embedstuff.cxmplate.workers.dev/?url=https://u.gg"></iframe>
-    </div>
+
+    <iframe src="https://embedstuff.cxmplate.workers.dev/?url=https://u.gg"></iframe>
+
 </body>
 </html>
