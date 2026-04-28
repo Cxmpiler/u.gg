@@ -2,39 +2,40 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>HTML Viewer</title>
+  <title>Website HTML Viewer</title>
   <style>
     body { font-family: Arial; margin: 20px; }
-    input { width: 400px; padding: 8px; }
+    input { width: 500px; padding: 8px; }
     button { padding: 8px 12px; }
     pre {
-      white-space: pre-wrap;
-      background: #f4f4f4;
-      padding: 10px;
       margin-top: 20px;
+      padding: 10px;
+      background: #f4f4f4;
+      white-space: pre-wrap;
       border: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
 
-<h2>Website HTML Fetcher</h2>
+<h2>HTML Fetcher</h2>
 
-<input id="url" placeholder="Enter full URL (https://example.com)">
-<button onclick="loadHTML()">Fetch</button>
+<input id="url" placeholder="https://example.com">
+<button onclick="loadPage()">Fetch HTML</button>
 
-<pre id="output">HTML will appear here...</pre>
+<pre id="output">Result will appear here...</pre>
 
 <script>
-async function loadHTML() {
+async function loadPage() {
     const url = document.getElementById("url").value;
 
-    // public CORS proxy (for testing only, not production)
-    const proxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent(url);
+    // Your Cloudflare Worker proxy
+    const proxy = "https://embedstuff.cxmplate.workers.dev/?url=" + encodeURIComponent(url);
 
     try {
         const res = await fetch(proxy);
         const text = await res.text();
+
         document.getElementById("output").textContent = text;
     } catch (err) {
         document.getElementById("output").textContent = "Error: " + err;
